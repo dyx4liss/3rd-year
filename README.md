@@ -9,11 +9,10 @@
 - [Тема 4. PHP](#php)
 - [Тема 5. Введение в React](#react)
 
-## Установка
+## HTML
 
 Опишите, как установить ваш проект. Например:
 
-```bash
-git clone https://github.com/ваш_пользователь/ваш_репозиторий.git
-cd ваш_репозиторий
-npm install
+## CSS
+
+## JavaScript
