@@ -1,28 +1,44 @@
-// 1.Посчитать количество цифр в числе: пользователь вводит число, программа выводит количество цифр.
-function countDigits() {
-    const number = prompt("Введите число:");
-    const digitCount = number.length; // Количество символов в строке
-    alert("Количество цифр в числе: " + digitCount);
+const readline = require('readline');
+
+// Создаем интерфейс для чтения ввода
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Функция для подсчета количества цифр в числе
+function countDigits(number) {
+    return number.toString().length;
 }
 
-countDigits();
-
-// 2. Определить наибольшее число из массива: пользователь вводит массив чисел, программа выводит наибольшее число.
-function findMaxNumber() {
-    const input = prompt("Введите массив чисел, разделенных запятыми:");
-    const numbers = input.split(",").map(Number); // Преобразуем строку в массив чисел
-    const maxNumber = Math.max(...numbers); // Находим максимальное число
-    alert("Наибольшее число в массиве: " + maxNumber);
+// Функция для нахождения наибольшего числа в массиве
+function findMaxInArray(array) {
+    return Math.max(...array);
 }
 
-findMaxNumber();
-
-
-// 3. Определить сумму всех цифр в числе: пользователь вводит число, программа выводит сумму всех его цифр.  напиши на javascript максимально простым языком
-function sumOfDigits() {
-    const number = prompt("Введите число:");
-    const sum = number.split("").reduce((acc, digit) => acc + Number(digit), 0); // Суммируем цифры
-    alert("Сумма всех цифр в числе: " + sum);
+// Функция для подсчета суммы всех цифр в числе
+function sumOfDigits(number) {
+    return number.toString().split('').reduce((sum, digit) => sum + Number(digit), 0);
 }
 
-sumOfDigits();
+// Задача 1: Подсчет количества цифр в числе
+rl.question('Введите число для подсчета количества цифр: ', (input) => {
+    const digitCount = countDigits(input);
+    console.log(`Количество цифр в числе: ${digitCount}`);
+
+    // Задача 2: Нахождение наибольшего числа в массиве
+    rl.question('Введите массив чисел, разделенных пробелом: ', (arrayInput) => {
+        const array = arrayInput.split(' ').map(Number);
+        const maxNumber = findMaxInArray(array);
+        console.log(`Наибольшее число в массиве: ${maxNumber}`);
+
+        // Задача 3: Подсчет суммы всех цифр в числе
+        rl.question('Введите число для подсчета суммы его цифр: ', (numberInput) => {
+            const sum = sumOfDigits(numberInput);
+            console.log(`Сумма всех цифр в числе: ${sum}`);
+
+            // Закрываем интерфейс
+            rl.close();
+        });
+    });
+});
